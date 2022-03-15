@@ -1074,7 +1074,7 @@ Threebox.prototype = {
 	updateSunGround: function (sunPos) {
 		if (this.terrainLayerName != '') {
 			// update the raster layer paint property with the position of the sun based on the selected time
-			this.map.setPaintProperty(this.terrainLayerName, 'raster-opacity', Math.max(sunPos.altitude, 0.25));
+			this.map.setPaintProperty(this.terrainLayerName, 'raster-opacity', Math.max(Math.min(1, sunPos.altitude * 4), 0.25));
 		}
 	},
 
@@ -1173,7 +1173,7 @@ Threebox.prototype = {
 
 	programs: function () { return this.renderer.info.programs.length },
 
-	version: '2.2.5',
+	version: '2.2.7',
 
 }
 
